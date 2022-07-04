@@ -41,3 +41,19 @@ div.corpo{
   line-height: 2em;
 
 }
+
+
+#formulario{
+    font-size: 25px;
+}
+.mensErro{
+    font-size: 18px;
+    color:#ff4d4d;
+    padding: top 0;;
+    
+}
+
+#formDiv{
+    text-align: center; 
+    margin-top: 100px;
+}
