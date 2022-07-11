@@ -30,5 +30,38 @@
         function converteDataMysql ($data) {
             return date('Y-m-d',$data);
         }
+
+        public function excluirProduto($id){
+
+            $sql = $this->con->prepare("delete from produtos
+
+            where produto_id = :id");
+
+            $sql->bindValue(':id', $id);
+            $sql->execute();
+        }
+        public function getProdutos(){
+            $rs = $this->con->query("SELECT * FROM produtos");
+
+            $lista = array();
+            while($row = $rs->fetch(PDO::FETCH_OBJ)){
+                $produto = new Produto();
+                $produto->setProduto_id($row->produto_id);
+                $produto->setReferencia($row->referencia);
+                $produto->setNome($row->nome);
+                $produto->setDescricao($row->descricao);
+                $produto->setEstoque($row->estoque);
+                $produto->setfabricante($row->cod_fabricante);
+                $produto->setPreco($row->preco);
+
+                $produto->setDataFabricacao($row->data_fabricacao);
+
+                $lista[] = $produto;
+
+            }
+            return $lista;
+        }
+
+        
     } 
 ?>

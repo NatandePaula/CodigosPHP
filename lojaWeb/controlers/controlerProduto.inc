@@ -59,6 +59,7 @@
         $produtoDAO->setConexao();
         $produtoDAO->excluirProduto($id);
         header("Location:controlerProduto.php?opcao=2");
+        
     }else if($opcao == 4) {
         $produto = new Produto();
         $produto->setProduto($_POST['pNome'], $_POST['pDescricao'], $_POST['pDataFabricacao'], $_POST['pPreco'],
