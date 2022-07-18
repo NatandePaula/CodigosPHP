@@ -6,8 +6,8 @@
         <p>
         <div style=" margin-top: 20px;">
         <form style="font-size: 20px; display: grid; 
-        justify-content: center ; align-items: center; text-align: justify; "
-         method="post" action="../controlers/controlerLogin.php">
+            justify-content: center ; align-items: center; text-align: justify; "
+            method="POST" action="../controlers/controlerLogin.php">
             <p>Login <input type="text" name="pLogin" size="20"><br>
             <p> Senha <input type="text" name="pSenha" size="10"><br>
             <p> Tipo de usuario:
@@ -17,7 +17,7 @@
                 </select> <br>
             <p style="text-align: center;"><input type="submit" value="Login"> <input type="reset" value="Cancelar">
         </form>
-        </form>
+        
         </div>
     </div>
     <p>

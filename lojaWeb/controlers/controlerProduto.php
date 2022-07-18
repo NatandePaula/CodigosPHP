@@ -1,7 +1,11 @@
 <?php
-    require_once("../classes/Produto.inc");
-    require_once("../dao/ProdutoDAO.inc");
+  
 
+    require_once("../classes/modeloLoja.inc");
+    require_once("../dao/ProdutoDAO.inc");
+    require_once("../views/includes/autenticar.inc");
+    
+    
     
 
     $opcao = (int)$_REQUEST['opcao'];
@@ -32,7 +36,7 @@
     else if($opcao == 2 || $opcao == 6) {
 
         $produtoDAO = new ProdutoDAO();
-        $produtoDAO->setConexao();
+        //$produtoDAO->setConexao();
         $lista = $produtoDAO->getProdutos();
         session_start();
         $_SESSION['lista'] = $lista;
@@ -56,11 +60,11 @@
     else if($opcao == 4) {
         $id = (int) $_REQUEST['id'];
         $produtoDAO = new ProdutoDAO();
-        $produtoDAO->setConexao();
+        //$produtoDAO->setConexao();
         $produtoDAO->excluirProduto($id);
         header("Location:controlerProduto.php?opcao=2");
         
-    }else if($opcao == 4) {
+    }else if($opcao == 5) {
         $produto = new Produto();
         $produto->setProduto($_POST['pNome'], $_POST['pDescricao'], $_POST['pDataFabricacao'], $_POST['pPreco'],
             $_POST['pEstoque'], $_POST['pReferencia'], $_POST['pFabricante']);
@@ -70,7 +74,7 @@
         $produtoDAO = new ProdutoDAO();
         $ProdutoDAO->atualizarProduto($produto);
 
-        header("Location:controlerProduto.php? opcao=2);
+        header("Location:controlerProduto.php? opcao=2");
 
     }    
 

@@ -1,43 +1,34 @@
 <?php
+     require_once 'includes/cabecalho.inc';
+     require_once("../views/includes/autenticar.inc");
 
-    require_once 'includes/cabecalho.inc';
-
-    session_start();
-
-    $fabricantes = $_SESSION['fabricantes'];
-
+     $fabricante = new $_SESSION['fabricante'];
 ?>
 
-<select name="pFabricante">
-    <option value='0'>-</option>" // primeiro item, nulo para não aparecer de
-    cara um fabricante
-    <?php
-        foreach($fabricantes as $fab){
-            echo "<option value='$fab->codigo'>$fab->nome</option>";
-            // colocamos o código como valor a ser enviado
-        }
-    ?>
-</select>
+    <h2>Informações do Produto</h2>
+    <p>
+    <form action="../controlers/controlerProduto.php" method="POST" >
+        <p> Nome <input type="text" name="nome" size="10">
+        <p> Data de Fabricação <input type="date" name="dataFabricacao" size="10">
+        <p> Preço <input type="text" name="preco" size="10">
+        <p> Quantidade no Estoque <input type="text" name="estoque" size="10">
+        <p> Descrição <input type="text" name="descricao" size="10">
+        <p> Referência <input type="text" name="referencia" size="10">
+        <p> <input type="hidden" name="opcao" value="1">
+        <select name="fabricante">
+            <option value="0"></option>
+            <?php
+                foreach ($fabricantes as $fab) {
+                    echo "<option value='$fab->codigo'>$fab->nome</option>";
+                }
+            ?>
+        </select>
+        <p>
+        <input type="submit" value="Cadastrar">
+        <input type="reset" value="Cancelar">
+    </form>
+    <p>
 
-<table border="1" width="30" cellspacing= "10">
-    <tr>
-        <td rowspan="5" align="center" ><img src="imagem/produto"
-             <?php  echo $prod->getReferencia();?> width="200">
-
-        </td>
-    </tr>
-
-    <tr align= "left">
-        <td colspan="2">NOME AQUI </td>
-
-    </tr>
-    <tr>
-        <td style="text-align:justify" colspan="2">Descrição</td>
-    </tr>
-    <tr>
-        <td colspan="2"> FABRICANTE</td>
-    </tr>
-    <TD>preco aqui</TD>
-    <td colspan="2">Imagem de compar </td>
-
-</table>
+<?php
+     require_once 'includes/rodape.inc';
+?>
